@@ -1,0 +1,79 @@
+CREATE TABLE userinfo(
+   UIID INT PRIMARY KEY AUTO_INCREMENT,
+   fname VARCHAR(75),
+   lname VARCHAR(75),
+   mname VARCHAR(50),
+  sex VARCHAR(10),
+   age INT,
+   bday DATE,
+   contact VARCHAR(15),
+   addressType VARCHAR(20),
+   blk VARCHAR(30),
+   street VARCHAR(100),
+   brgy VARCHAR(100),
+   city VARCHAR(100),
+   province VARCHAR(100),
+   zipCode INT,
+   email VARCHAR(50),
+   username VARCHAR(50),
+   pass VARCHAR(200),
+   dateReg DATE,
+   dateModify DATE,
+   dateRemoved DATE,
+   flag INT
+);
+
+CREATE TABLE prodinfo (
+   PIID INT PRIMARY KEY AUTO_INCREMENT,
+   name VARCHAR(75),
+   type VARCHAR(50),
+   price DECIMAL(10,2),
+   detail TEXT,
+   prodImage VARCHAR(200)
+);
+
+INSERT INTO prodinfo (name, type, price, detail, prodImage)
+VALUES
+('Boston Cream Donut', 'Donut', 85.00, 'A round, yeast donut filled with vanilla custard and topped with a rich chocolate glaze. It is like having a dessert in donut form.', 'product/boston_cream_donut.png'),
+('Jelly-Filled Donut', 'Donut', 75.00, 'A soft yeast donut filled with sweet fruit jelly, often raspberry or strawberry. Usually dusted with powdered sugar or a light glaze.', 'product/jelly_filled_donut.png'),
+('Cronut', 'Donut', 105.00, 'A hybrid between a croissant and a donut, known for its flaky, layered texture and sweet, crispy outside. Filled with chocolate fillings', 'product/cronut.png'),
+('Cinnamon Sugar Donuts', 'Donut', 65.00, 'A soft, fluffy donut coated in a sweet blend of cinnamon and sugar. The outside is slightly crispy, while the inside remains tender, offering a warm, spiced sweetness in every bite.', 'product/cinnamon_sugar_donuts.png'),
+('Oreo Donut', 'Donut', 95.00, 'Soft donut topped with a creamy glaze and crushed Oreo cookie pieces, combining the rich, chocolatey crunch of Oreos with the sweetness of the donut.', 'product/oreo_donut.png'),
+('Cream Horns', 'Pastry', 85.00, 'Crispy and buttery puff pastry cannoncini filled with velvety and rich custard cream.', 'product/cream_horns.jpg'),
+('Puffy Sausage Roll', 'Pastry', 95.00, 'Flaky, buttery puff pastry with an apple, sage, and garlic sausage filling for an irresistible appetizer', 'product/puffy_sausage_roll.jpg'),
+('Cream Cheese Danish', 'Pastry', 110.00, 'A perfect combination of flaky puff pastry, creamy cheese filling, and sweet cherry pie topping.', 'product/cherry_cheese_danish.jpg'),
+('Nutella Croissant', 'Pastry', 120.00, 'Flaky and buttery croissant dough filled with lots of Nutella Chocolate', 'product/nutella_croissant.jpg'),
+('Bluey Berry Pie', 'Pastry', 380.00, 'Loaded with juicy blueberries in a flaky crust and the flavorful filling is jammy and juicy yet perfectly sliceable. Good for 3-4 person.', 'product/bluey_berry.jpg'),
+('Iced Caramel Macchiato', 'Beverage', 195.00, 'Features layers of vanilla syrup, cold milk, ice, and rich espresso, all topped with a delicious drizzle of caramel sauce. Perfect for a sweet, caffeinated pick-me-up.', 'product/iced_caramel_machiatto.jpg'),
+('Strawberry Cheesecake Milkshake', 'Beverage', 169.00, 'Made with vanilla ice cream, graham cracker crumbs and a slice of real strawberry cheesecake for your fruity and cheesy cravings.', 'product/strawberry_cheesecake_milkshake.jpg'),
+('Caramel Frapuccino', 'Beverage', 205.00, 'This FROZEN SAMOA COOKIE COLD BREW COFFEE is the frozen coffee you need to get through ANY day. Loaded with coconut, chocolate, caramel, and cold brew coffee. The ultimate!', 'product/caramel_frapuccino.jpg'),
+('S\'mores Freakshakes Milkshake', 'Beverage', 190.00, 'The perfect summertime flavored milkshake. The base is marshmallow vanilla, drizzled and rimmed with chocolate ganache and topped with crushed graham cracker crumbs.', 'product/smores_freakshakes_milkshake.jpg'),
+('Choco Loco', 'Beverage', 195.00, 'A hot chocolate drink with whipped cream and nuts on the table, hot cocoa drink.', 'product/choco_loco.jpg');
+
+CREATE TABLE favinfo (
+   FIID INT PRIMARY KEY AUTO_INCREMENT,
+   UIID INT,
+   PIID INT,
+   flag INT
+);
+
+CREATE TABLE basketinfo (
+   BIIT INT PRIMARY KEY AUTO_INCREMENT,
+   UIID INT,
+   PIID INT,
+   qty INT,
+   price DECIMAL(10,2)
+);
+
+CREATE TABLE orderinfo (
+   TRID INT PRIMARY KEY AUTO_INCREMENT,
+   UIID INT,
+   PIID INT,
+   qty INT,
+   subtotal DECIMAL(10,2),
+   total DECIMAL(10,2),
+   dateOrdered DATETIME,
+   dateDelivered DATETIME,
+   ordertag VARCHAR(50),
+   status VARCHAR(50)
+);
